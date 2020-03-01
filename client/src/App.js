@@ -27,8 +27,17 @@ function App() {
     );
   };
 
+  const addNewProduct = async()=>{
+      const payload = {"name": "test", "description": "description"}
+      let res = await productService.addNew(payload);
+      getProducts();
+  }
+
   return (
     <div className="App">
+      <button onClick={addNewProduct}>
+        Add
+      </button>
       <ul className="list">
         {(products && products.length > 0) ? (
           products.map(product => renderProduct(product))
